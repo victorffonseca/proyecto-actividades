@@ -1,0 +1,26 @@
+<button class="btn btn-primary active" (click)="agregarActividad()">Nueva Actividad</button>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Actividad</th>
+            <th>Fecha y hora estimada</th>
+            <th>Dias de retraso</th>
+            <th>Estado</th>
+            <th>Responsable</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tempActividad of actividades">
+            <td>{{ tempActividad.nombreActividad }}</td>
+            <td>{{ tempActividad.fechaHoraEjecucion | date:'medium'}}</td>
+            <td>{{ tempActividad.diasRetraso }}</td>
+            <td>{{ tempActividad.estado | yesNo}}</td>
+            <td>{{ tempActividad.empleado.nombreCompleto }}</td>
+            <td>
+                <button class="btn btn-info active" (click)="detallesActividad(tempActividad.idActividad)">Detalles</button>
+                <button class="btn btn-danger active" (click)="eliminarActividad(tempActividad.idActividad)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

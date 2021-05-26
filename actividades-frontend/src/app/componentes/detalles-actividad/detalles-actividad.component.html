@@ -1,0 +1,33 @@
+<h2>Detalles Actividad</h2> 
+
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+      <label for="nombreActividad">Nombre</label>
+      <input type="text" class="form-control" id="nombreActividad" required [(ngModel)]="actividad.nombreActividad" name="nombreActividad">
+  </div>
+
+  <div class="form-group">
+      <label for="fechaHoraEjecucion">Fecha y hora</label>
+      <input type="text" class="form-control" id="fechaHoraEjecucion" required [(ngModel)]="actividad.fechaHoraEjecucion" name="fechaHoraEjecucion">
+  </div>
+
+  <div class="form-group">
+    <label for="empleado">Empleado</label>
+    <select class="form-control" id="empleado" required [(ngModel)]="actividad.empleado" name="empleado">
+        <option *ngFor="let empleado of empleados" [ngValue]="empleado">{{empleado.nombreCompleto}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="estado">Estado</label>
+    <select class="form-control" id="estado" required [(ngModel)]="actividad.estado" name="estado">
+      <option [ngValue]="false">Pendiente</option>
+      <option [ngValue]="true">Terminada</option>
+  </select>
+  </div>
+
+  <br>
+  <button type="submit" class="btn btn-success">Guardar</button>
+</form>
+<br>
+<button (click)="volverALista()" class="btn btn-primary">Regresar</button>
